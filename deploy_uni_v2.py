@@ -35,7 +35,7 @@ with open("./canonical_artifacts/UniswapV2Factory.json", 'r') as artifact:
 UniV2Factory: Contract = w3.eth.contract(abi=abi, bytecode=bytecode)
 
 
-tx = UniV2Factory.constructor(DEPLOYER.address).build_transaction({"from": V2_OWNER, "gasPrice": gas_price, 'gas': gas_limit, 'nonce': nonce})
+tx = UniV2Factory.constructor(V2_OWNER).build_transaction({"from": DEPLOYER, "gasPrice": gas_price, 'gas': gas_limit, 'nonce': nonce})
 singed_tx = DEPLOYER.sign_transaction(tx)
 
 res: bytes = w3.eth.send_raw_transaction(singed_tx.rawTransaction)
