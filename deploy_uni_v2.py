@@ -15,11 +15,10 @@ PRIVATE_KEY = args.private_key
 RPC_URL = args.rpc_url
 GOVERNANCE_ADDR = args.governance_addr
 
-# Set provider
+
 w3 = Web3(HTTPProvider(RPC_URL))
 
 
-# set env var
 DEPLOYER: LocalAccount = w3.eth.account.from_key(PRIVATE_KEY)
 abi = None
 bytecode = None
@@ -27,7 +26,7 @@ bytecode = None
 
 gas_limit = 10_000_000
 nonce = w3.eth.get_transaction_count(DEPLOYER.address)
-# NOTE: Best to check with whichever network you are deploying to since some have weird gas systems (e.g. Boba network)
+# NOTE: Best to check with whichever network you are deploying to since some have odd gas systems (e.g. Boba network)
 gas_price = w3.eth.gas_price
 
 
