@@ -2,13 +2,12 @@ from web3 import (Web3, HTTPProvider)
 from web3.contract.contract import Contract
 from eth_account.signers.local import (LocalAccount)
 import json
-import os
 import argparse
 
 parser = argparse.ArgumentParser(description="") 
-parser.add_argument('--private-key', type=str, help="Private key for deployer addr, beginning with 0x")
-parser.add_argument('--rpc-url',type=str, help="specify the rpc endpoint you are deploying to (https)")
-parser.add_argument('--governance-addr', type=str, help="specify the governance address to be used in constructor")
+parser.add_argument('--private-key', type=str, help="Private key for deployer addr, beginning with 0x", required=True)
+parser.add_argument('--rpc-url',type=str, help="specify the rpc endpoint you are deploying to (https)", required=True)
+parser.add_argument('--governance-addr', type=str, help="specify the governance address to be used in constructor", required=True)
 
 args =  parser.parse_args()
 PRIVATE_KEY = args.private_key
